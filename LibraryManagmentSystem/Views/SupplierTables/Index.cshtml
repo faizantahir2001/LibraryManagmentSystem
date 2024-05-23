@@ -1,0 +1,55 @@
+﻿@model IEnumerable<DatabaseLayer.SupplierTable>
+
+@{
+    ViewBag.Title = "All Supplier's";
+}
+
+<p>
+    @Html.ActionLink("New Supplier", "Create",null,new {@class="btn btn-success" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            SupplierName
+        </th>
+        <th>
+            Contact No
+        </th>
+        <th>
+            Email
+        </th>
+        <th>
+            Description
+        </th>
+        <th>
+            User
+        </th>
+        <th>Action's</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.SupplierName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ContactNo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserTable.UserName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.SupplierID }, new { @class = "btn btn-primary" })
+            @Html.ActionLink("Details", "Details", new { id = item.SupplierID },new { @class = "btn btn-info" })
+
+        </td>
+    </tr>
+}
+
+</table>
